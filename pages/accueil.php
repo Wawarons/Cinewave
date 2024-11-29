@@ -11,7 +11,7 @@ include('header.php');
     <h2>Top films</h2>
     <div class="top_contenu">
         <div class="top-film">
-            <img src="https://placehold.co/200x300" alt="affiche de film">
+            <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="affiche de film">
         </div>
         <div class="top-film">
             <img src="https://placehold.co/200x300" alt="affiche de film">
@@ -32,7 +32,7 @@ include('header.php');
     <h2>Top Séries</h2>
     <div class="top_contenu">
         <div class="top-film">
-            <img src="https://placehold.co/200x300" alt="affiche de film">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPOVzGa_q1uk3muF_eGgr7nsSNBil4UCJ9Mw&s" alt="affiche de film">
         </div>
         <div class="top-film">
             <img src="https://placehold.co/200x300" alt="affiche de film">
@@ -48,3 +48,6 @@ include('header.php');
         </div>
     </div>
 </div>
+<?php
+include('footer.php');
+?>

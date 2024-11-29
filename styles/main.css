@@ -10,7 +10,8 @@ body {
     font-family: "Arcane nine", sans-serif;
     color: #fff;
     margin: 0;
-    background: url("../assets/images/background.gif") no-repeat fixed;
+    background: url("../assets/images/backgroundbody.PNG") no-repeat fixed;
+    background-size: cover;
 }
 
 /**
@@ -67,16 +68,36 @@ header nav a:hover {
 
 .top-film img {
     cursor: pointer;
-    transition: .2s;
+    transition: .4s;
+    width: 220px;
+    height: 300px;
 }
 
 .top-film img:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 4px 7px #ffffff;
+    box-shadow: 0 0 4px 5px #ffffff;
 }
 
 .top_contenu {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+/* Section footer
+ */
+footer{
+    margin-top: 150px;
+}
+footer ul a{
+    text-decoration: none;
+    color: white;
+}
+footer li{
+    list-style: none;
+    margin-bottom: 5px;
+}
+#end{
+    display: flex;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, 0.32);
 }
