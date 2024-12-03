@@ -104,3 +104,7 @@ footer li{
     justify-content: space-around;
     background: rgba(255, 255, 255, 0.32);
 }
+#Sub{
+    display: flex;
+    justify-content: space-around;
+}

@@ -15,6 +15,7 @@
             <a href="#">Accueil</a>
             <a href="#">Films/Séries</a>
             <a href="#">Trailers</a>
+            <a href="#">s'abonner</a>
         </div>
         <a href="#">
             <img src="../assets/images/connexion.svg" alt="logo cinewave" width="25" height="25">
