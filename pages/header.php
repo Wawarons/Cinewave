@@ -10,6 +10,7 @@
 <header>
     <nav>
         <img src="../assets/images/Logo.png" alt="logo cinewave" width="90" height="90">
+        <p class="cine">CineWave</p>
         <div id="navlinks">
             <a href="#">Accueil</a>
             <a href="#">Films/Séries</a>

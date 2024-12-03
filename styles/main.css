@@ -30,9 +30,12 @@ header nav {
     margin: 0;
     width: 100%;
     height: 100px;
+    background-color: rgba(0, 0, 0, 0.33);
     /*background: url("../assets/images/header_background.jpg") no-repeat fixed center;*/
 }
-
+.cine{
+    font-size: 40px;
+}
 header #navlinks {
     width: 80%;
     display: flex;
