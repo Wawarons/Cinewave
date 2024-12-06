@@ -17,7 +17,7 @@
                 <a href="accueil.php">Accueil</a>
                 <a href="#">Films</a>
                 <a href="#">Séries</a>
-                <a href="#">Trailers</a>
+                <a href="#">Manga</a>
             </div>
             <a href="connexion.php">
                 <img src="../assets/images/connexion.svg" alt="logo cinewave" width="25" height="25">

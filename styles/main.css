@@ -46,7 +46,6 @@ header #navlinks {
 header nav a {
     padding: 7px;
     border-radius: 10px;
-    background-color: rgba(25, 92, 151, 0.38);
     text-decoration: none;
     color: #fff;
     transition: .2s;
