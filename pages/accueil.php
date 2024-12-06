@@ -1,5 +1,9 @@
 <?php
 include('header.php');
+include('../config/config.php');
+$dbContent = getContentConnection();
+$data = mysqli_query($dbContent, "SELECT * FROM `film`");
+$data = mysqli_fetch_all($data, MYSQLI_ASSOC);
 ?>
 
 <div id="trailer_accueil">
@@ -10,21 +14,17 @@ include('header.php');
 <div class="top">
     <h2>Top films</h2>
     <div class="top_contenu">
-        <div class="top-film">
-            <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="affiche de film">
-        </div>
-        <div class="top-film">
-            <img src="https://placehold.co/200x300" alt="affiche de film">
-        </div>
-        <div class="top-film">
-            <img src="https://placehold.co/200x300" alt="affiche de film">
-        </div>
-        <div class="top-film">
-            <img src="https://placehold.co/200x300" alt="affiche de film">
-        </div>
-        <div class="top-film">
-            <img src="https://placehold.co/200x300" alt="affiche de film">
-        </div>
+        <?php
+        foreach ($data as $index => $film) {
+
+            echo "
+             <div class='top-film'>
+                <img src='". $film['image'] ."' alt='affiche de film'>
+             </div>
+            ";
+
+        }
+        ?>
     </div>
 </div>
 
