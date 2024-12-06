@@ -2,20 +2,20 @@
 include('header.php');
 include('../config/config.php');
 $dbContent = getContentConnection();
-$data = mysqli_query($dbContent, "SELECT * FROM `film`");
-$data = mysqli_fetch_all($data, MYSQLI_ASSOC);
+$topFilms = mysqli_query($dbContent, "SELECT * FROM `film` LIMIT 5")->fetch_all(MYSQLI_ASSOC);
+$topSeries = mysqli_query($dbContent, "SELECT * FROM `serie` LIMIT 5")->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <div id="trailer_accueil">
     <video autoplay muted> <!-- Intégration trailer -->
-        <source src="https://imdb-video.media-imdb.com/vi444713241/1434659607842-pgv4ql-1732665880489.mp4?Expires=1732959194&Signature=mr9SiH8mtEs2MKvrUeggmS5ojMXFfsIASIehflWQ7ucZrdIf17R1xyaQFIkXDFpgxBAJEt5csDze7QBcoJyILHVgG9jQwyVSmc1hJxo-ju6KYj0nSc8zEs3hbBJ3CnsHw0zb7YaB8ziDFz1Sioki~3Cy7Os~kAEWZOUnNv68dwtWWY33AgJk~dxKz5dnUrN8ryVICE-WF3i94bH8B4mZGWx5GeFbS4dKTlhQrsdbC2clmyzBCXLSq4Dp83zLMhehpczHWFLezhxqDL-Qg6HCZ3IGjYKZPkpEkYbSCXY2mQG6UEYcwAd6JTNp4unFnJ0mphQ3ZTBbwNSuVb7q0vJBKQ__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA">
+        <source src="https://bright-crimson-sloth.myfilebase.com/ipfs/QmWV4GrNchNZPSfxvbHzb5brCxC6KvRGW6tUmmMUnsufg8">
     </video>
 </div>
 <div class="top">
     <h2>Top films</h2>
     <div class="top_contenu">
         <?php
-        foreach ($data as $index => $film) {
+        foreach ($topFilms as $index => $film) {
 
             echo "
              <div class='top-film'>
@@ -31,21 +31,17 @@ $data = mysqli_fetch_all($data, MYSQLI_ASSOC);
 <div class="top">
     <h2>Top Séries</h2>
     <div class="top_contenu">
-        <div class="top-film">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPOVzGa_q1uk3muF_eGgr7nsSNBil4UCJ9Mw&s" alt="affiche de film">
-        </div>
-        <div class="top-film">
-            <img src="https://placehold.co/200x300" alt="affiche de film">
-        </div>
-        <div class="top-film">
-            <img src="https://placehold.co/200x300" alt="affiche de film">
-        </div>
-        <div class="top-film">
-            <img src="https://placehold.co/200x300" alt="affiche de film">
-        </div>
-        <div class="top-film">
-            <img src="https://placehold.co/200x300" alt="affiche de film">
-        </div>
+        <?php
+        foreach ($topSeries as $index => $serie) {
+
+            echo "
+             <div class='top-film'>
+                <img src='". $serie['image'] ."' alt='affiche de film'>
+             </div>
+            ";
+
+        }
+        ?>
     </div>
 </div>
 <?php
