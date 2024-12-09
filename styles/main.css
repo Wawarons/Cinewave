@@ -3,14 +3,14 @@ Ajout de la font Arcane nine.
  */
 @font-face {
     font-family: "Arcane nine";
-    src: url("../assets/fonts/Arcane_nine.otf") format("opentype");
+    src: url('../assets/fonts/Arcane_nine.otf') format("opentype");
 }
 
 body {
     font-family: "Arcane nine", sans-serif;
     color: #fff;
     margin: 0;
-    background: url("../assets/images/backgroundbody.PNG") no-repeat fixed;
+    background: url('../assets/images/backgroundbody.PNG') no-repeat fixed;
     background-size: cover;
 }
 
@@ -43,7 +43,7 @@ header #navlinks {
     justify-content: space-around;
 }
 
-header nav a {
+.navlink {
     padding: 7px;
     border-radius: 10px;
     text-decoration: none;
@@ -51,7 +51,7 @@ header nav a {
     transition: .2s;
 }
 
-header nav a:hover {
+.navlink:hover {
     box-shadow: 0 0 4px 2px cyan;
 }
 
@@ -178,4 +178,58 @@ form {
     color: #fff;
     margin: 15px auto;
     width: 250px;
+}
+/* page films et series
+ */
+.align_movie img {
+
+    width: 200px;
+    height: 300px;
+    cursor: pointer;
+    transition: .4s;
+}
+.align_movie{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.align_movie img:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 4px 5px #ffffff;
+}
+/* page article film et series*/
+.movie_art{
+    background-color: rgba(6, 79, 101, 0.53);
+    border: solid 2px white;
+    border-radius: 5px;
+    width: 80%;
+    margin: 10% auto;
+
+}
+.movie_art img{
+    width: 400px;
+    height: auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 15px;
+}
+.desc_art img{
+    width: 300px;
+    height: 400px;
+}
+.desc_art{
+    display: flex;
+}
+.desc{
+    width: 40%;
+}
+.try_art{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.art{
+    display: flex;
+    flex-direction: column;
 }
