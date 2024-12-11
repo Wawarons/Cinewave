@@ -1,37 +1,145 @@
 <?php
 include('header.php');
 ?>
-<div id="Sub">
-<div class="tsunami">
+<h1 id="abonnement_title">Abonnements</h1>
+<div id="abonnement_container">
 
-        <ul class="text-over">
-        Marée haute :
-        <li> Contenu limitée</li>
-        <li>Publicités</li>
-        </ul>
-
-<img src="https://cdn.leonardo.ai/users/25f08f90-555f-4f16-bae5-69e9ccea163a/generations/6eef1b33-8921-40db-9f9e-87f90ce69082/Leonardo_Phoenix_A_futuristic_illustration_depicting_a_subscri_1.jpg">
-</div>
-    <div class="tsunami">
-       <ul class="text-lay">
-           La vague :
-           <li>Accès complet</li>
-           <li>Aucune publicité</li>
-           <li>Rémunération crypto limité</li>
-       </ul>
-        <img src="https://cdn.leonardo.ai/users/25f08f90-555f-4f16-bae5-69e9ccea163a/generations/6eef1b33-8921-40db-9f9e-87f90ce69082/Leonardo_Phoenix_A_futuristic_illustration_depicting_a_subscri_3.jpg" >
+    <!-- Carte d'abonnement marée haute -->
+    <div class="abonnement_card">
+        <div class="abonnement_header" style="background: url('/assets/images/maree_haute.jpg') no-repeat center center; background-size: cover;">
+            <h2>Marée haute</h2>
+        </div>
+        <div class="abonnement_descr_container">
+            <table>
+                <tr>
+                    <th>Fonctionnalité</th>
+                    <th>Disponible</th>
+                </tr>
+                <tr>
+                    <td>Accès Complet</td>
+                    <td>
+                        <img src="/assets/images/cross_icon.svg" alt="cross icon" width="25" height="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Aucune Publicité</td>
+                    <td>
+                        <img src="/assets/images/cross_icon.svg" alt="cross icon" width="25" height="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Avant-première</td>
+                    <td>
+                        <img src="/assets/images/cross_icon.svg" alt="cross icon" width="25" height="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Rénumeration crypto</td>
+                    <td>
+                        <img src="/assets/images/cross_icon.svg" alt="cross icon" width="25" height="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mensualité</td>
+                    <td>
+                        <p>Gratuit</p>
+                    </td>
+                </tr>
+            </table>
+            <a href="#" class="abonnement_button" id="disabled">Active</a>
+        </div>
     </div>
-    <div class="tsunami">
-        <ul class="text-overlay"
-            Tsunami :
 
-             <li>Accès complet</li>
-            <li>Aucune publicité</li>
-            <li>Avant-première</li>
-            <li>Rémunération crypto</li>
-        </ul>
+    <!-- Carte d'abonnement La vague -->
 
-        <img src="https://cdn.leonardo.ai/users/25f08f90-555f-4f16-bae5-69e9ccea163a/generations/6eef1b33-8921-40db-9f9e-87f90ce69082/Leonardo_Phoenix_A_futuristic_illustration_depicting_a_subscri_2.jpg">
+    <div class="abonnement_card">
+        <div class="abonnement_header" style="background: url('/assets/images/la_vague.jpg') no-repeat center center; background-size: cover;">
+            <h2>La vague</h2>
+        </div>
+        <div class="abonnement_descr_container">
+            <table>
+                <tr>
+                    <th>Fonctionnalité</th>
+                    <th>Disponible</th>
+                </tr>
+                <tr>
+                    <td>Accès Complet</td>
+                    <td>
+                        <img src="/assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Aucune Publicité</td>
+                    <td>
+                        <img src="/assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Avant-première</td>
+                    <td>
+                        <img src="/assets/images/cross_icon.svg" alt="cross icon" width="25" height="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Rénumeration crypto</td>
+                    <td>
+                        <img src="/assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mensualité</td>
+                    <td>
+                        <p>5.99€</p>
+                    </td>
+                </tr>
+            </table>
+            <a href="#" class="abonnement_button">Activer</a>
+        </div>
+    </div>
 
+    <!-- Carte d'abonnement Tsunami -->
+    <div class="abonnement_card">
+        <div class="abonnement_header" style="background: url('/assets/images/tsunamie.jpg') no-repeat center center; background-size: cover;">
+            <h2>Tsunami</h2>
+        </div>
+        <div class="abonnement_descr_container">
+            <table>
+                <tr>
+                    <th>Fonctionnalité</th>
+                    <th>Disponible</th>
+                </tr>
+                <tr>
+                    <td>Accès Complet</td>
+                    <td>
+                        <img src="/assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Aucune Publicité</td>
+                    <td>
+                        <img src="/assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Avant-première</td>
+                    <td>
+                        <img src="/assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Rénumeration crypto</td>
+                    <td>
+                        <img src="/assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mensualité</td>
+                    <td>
+                        <p>12.99€</p>
+                    </td>
+                </tr>
+            </table>
+            <a href="#" class="abonnement_button">Activer</a>
+        </div>
     </div>
 </div>
