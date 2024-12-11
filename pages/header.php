@@ -11,14 +11,23 @@
 <body>
     <header>
         <nav>
-           <a href="accueil.php"> <img src="../assets/images/Logo.png" alt="logo cinewave" width="90" height="90"></a>
-            <p class="cine">CineWave</p>
+            <div id="logo_container">
+                <a href="accueil.php"> <img src="../assets/images/Logo.png" alt="logo cinewave" width="90" height="90"></a>
+                <p class="cine">CineWave</p>
+            </div>
+
             <div id="navlinks">
-                <a href="accueil.php"  class="navlink">Accueil</a>
+                <a href="accueil.php" class="navlink">Accueil</a>
                 <a href="film.php" class="navlink">Films</a>
                 <a href="serie.php" class="navlink">Séries</a>
-                <a href="manga.php" class="navlink">Manga</a>
+                <a href="manga.php" class="navlink">Animés</a>
+                <a href="abonnement.php" class="navlink" id="abonnement_link">S'abonner</a>
             </div>
+                <form action="#">
+                    <input type="submit" value="chercher" id="search_button">
+                    <input type="text" placeholder="From..." id="searchbar">
+                </form>
+
             <a href="connexion.php" class="navlink">
                 <img src="../assets/images/connexion.svg" alt="logo cinewave" width="25" height="25">
             </a>

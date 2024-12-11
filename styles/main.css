@@ -25,12 +25,51 @@ header {
 
 header nav {
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-between;
     margin: 0;
     width: 100%;
     height: 100px;
     background-color: rgba(0, 0, 0, 0.33);
+}
+
+header nav form {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 0 0 25px;
+    width: 50%;
+    height: fit-content;
+}
+
+header #search_button {
+    border-radius: 10px 0 0 10px;
+    border: none;
+    outline: none;
+    margin: 0;
+    width: 100px;
+    text-align: left;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-family: 'Prompt', sans-serif;
+    height: 39.9px;
+}
+
+header #searchbar {
+    transform: translateX(-20%);
+    padding: 5px;
+    border-radius: 10px;
+    margin: 0;
+    border: none;
+    outline: none;
+    width: 200px;
+    font-family: 'Prompt', sans-serif;
+}
+
+
+header #logo_container {
+    display: flex;
+    align-items: center;
 }
 
 .cine {
@@ -38,9 +77,10 @@ header nav {
 }
 
 header #navlinks {
-    width: 80%;
+    width: 25%;
     display: flex;
     justify-content: space-around;
+    margin-left: 15px;
 }
 
 .navlink {
