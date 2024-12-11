@@ -225,3 +225,26 @@ form {
     margin: 15px auto;
     width: 250px;
 }
+/* page admin */
+.admin_menu{
+    position: absolute;
+    text-align: center;
+    left: 1%;
+    border: 1px solid rgba(25, 92, 151, 0.7);;
+    width: 11%;
+    height: 86%;
+
+    background-color: rgba(25, 92, 151, 0.7);
+}
+.menu_text{
+    position: relative;
+    text-align: center;
+    font-size: 2rem;
+}
+.button_menu{
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #121212;
+font-weight: bold;
+}
