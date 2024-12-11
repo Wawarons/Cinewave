@@ -111,9 +111,55 @@ footer li {
 
 #Sub {
     display: flex;
-    justify-content: space-around;
-}
+    justify-content: space-between;
 
+}
+.tsunami img{
+
+    width: 100%;
+    border-radius: 12%;
+
+
+}
+.text-overlay{
+    position: absolute;
+    top: 19%;
+    left: 99rem;
+    transform:translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
+}
+.imag{
+    opacity: 0.7;
+    z-index: 0;
+}
+.text-over{
+    position: absolute;
+    top: 15%;
+    left: 18%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    color: #00ffcc;
+    text-shadow:
+           0 0 5px #00ffcc,
+           0 0 10px #00ffcc,
+           0 0 15px #00ffcc,
+           0 0 20px #00ffcc,
+           0 0 30px #00ffcc;
+
+}
+.text-lay{
+    position: absolute;
+    top: 19%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
+}
 #auth_container {
     margin-top: 50px;
 }
