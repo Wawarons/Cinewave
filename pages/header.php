@@ -5,6 +5,7 @@
     <title>Cinewave</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
@@ -12,8 +13,7 @@
     <header>
         <nav>
             <div id="logo_container">
-                <a href="accueil.php"> <img src="../assets/images/Logo.png" alt="logo cinewave" width="90" height="90"></a>
-                <p class="cine">CineWave</p>
+                <a href="accueil.php"> <img src="../assets/images/Logo.png" alt="logo cinewave" width="100" height="60"></a>
             </div>
 
             <div id="navlinks">
