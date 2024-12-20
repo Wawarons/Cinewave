@@ -1,6 +1,6 @@
 <?php
-include('header.php');
-include('../config/queries.php');
+include('includes/header.php');
+include('includes/queries.php');
 
 if (isset($_GET['type']) && isset($_GET['title'])) {
     $type = $_GET['type'];

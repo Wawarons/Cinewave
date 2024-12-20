@@ -1,12 +1,12 @@
 <?php
-include('header.php');
+include('includes/header.php');
 ?>
 <h1 id="abonnement_title">Abonnements</h1>
 <div id="abonnement_container">
 
     <!-- Carte d'abonnement marée haute -->
     <div class="abonnement_card">
-        <div class="abonnement_header" style="background: url('../assets/images/maree_haute.jpg') no-repeat center center; background-size: cover;">
+        <div class="abonnement_header" style="background: url('assets/images/abonnements/maree_haute.jpg') no-repeat center center; background-size: cover;">
             <h2>Marée haute</h2>
         </div>
         <div class="abonnement_descr_container">
@@ -18,25 +18,25 @@ include('header.php');
                 <tr>
                     <td>Accès Complet</td>
                     <td>
-                        <img src="../assets/images/cross_icon.svg" alt="cross icon" width="25" height="25">
+                        <img src="assets/images/icons/cross_icon.svg" alt="cross icon" width="25" height="25">
                     </td>
                 </tr>
                 <tr>
                     <td>Aucune Publicité</td>
                     <td>
-                        <img src="../assets/images/cross_icon.svg" alt="cross icon" width="25" height="25">
+                        <img src="assets/images/icons/cross_icon.svg" alt="cross icon" width="25" height="25">
                     </td>
                 </tr>
                 <tr>
                     <td>Avant-première</td>
                     <td>
-                        <img src="../assets/images/cross_icon.svg" alt="cross icon" width="25" height="25">
+                        <img src="assets/images/icons/cross_icon.svg" alt="cross icon" width="25" height="25">
                     </td>
                 </tr>
                 <tr>
                     <td>Rénumeration crypto</td>
                     <td>
-                        <img src="../assets/images/cross_icon.svg" alt="cross icon" width="25" height="25">
+                        <img src="assets/images/icons/cross_icon.svg" alt="cross icon" width="25" height="25">
                     </td>
                 </tr>
                 <tr>
@@ -53,7 +53,7 @@ include('header.php');
     <!-- Carte d'abonnement La vague -->
 
     <div class="abonnement_card">
-        <div class="abonnement_header" style="background: url('../assets/images/la_vague.jpg') no-repeat center center; background-size: cover;">
+        <div class="abonnement_header" style="background: url('assets/images/abonnements/la_vague.jpg') no-repeat center center; background-size: cover;">
             <h2>La vague</h2>
         </div>
         <div class="abonnement_descr_container">
@@ -65,25 +65,25 @@ include('header.php');
                 <tr>
                     <td>Accès Complet</td>
                     <td>
-                        <img src="../assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                        <img src="assets/images/icons/check_icon.svg" alt="check icon" width="25" height="25">
                     </td>
                 </tr>
                 <tr>
                     <td>Aucune Publicité</td>
                     <td>
-                        <img src="../assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                        <img src="assets/images/icons/check_icon.svg" alt="check icon" width="25" height="25">
                     </td>
                 </tr>
                 <tr>
                     <td>Avant-première</td>
                     <td>
-                        <img src="../assets/images/cross_icon.svg" alt="cross icon" width="25" height="25">
+                        <img src="assets/images/icons/cross_icon.svg" alt="cross icon" width="25" height="25">
                     </td>
                 </tr>
                 <tr>
                     <td>Rénumeration crypto</td>
                     <td>
-                        <img src="../assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                        <img src="assets/images/icons/check_icon.svg" alt="check icon" width="25" height="25">
                     </td>
                 </tr>
                 <tr>
@@ -99,7 +99,7 @@ include('header.php');
 
     <!-- Carte d'abonnement Tsunami -->
     <div class="abonnement_card">
-        <div class="abonnement_header" style="background: url('../assets/images/tsunamie.jpg') no-repeat center center; background-size: cover;">
+        <div class="abonnement_header" style="background: url('assets/images/abonnements/tsunamie.jpg') no-repeat center center; background-size: cover;">
             <h2>Tsunami</h2>
         </div>
         <div class="abonnement_descr_container">
@@ -111,25 +111,25 @@ include('header.php');
                 <tr>
                     <td>Accès Complet</td>
                     <td>
-                        <img src="../assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                        <img src="assets/images/icons/check_icon.svg" alt="check icon" width="25" height="25">
                     </td>
                 </tr>
                 <tr>
                     <td>Aucune Publicité</td>
                     <td>
-                        <img src="../assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                        <img src="assets/images/icons/check_icon.svg" alt="check icon" width="25" height="25">
                     </td>
                 </tr>
                 <tr>
                     <td>Avant-première</td>
                     <td>
-                        <img src="../assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                        <img src="assets/images/icons/check_icon.svg" alt="check icon" width="25" height="25">
                     </td>
                 </tr>
                 <tr>
                     <td>Rénumeration crypto</td>
                     <td>
-                        <img src="../assets/images/check_icon.svg" alt="check icon" width="25" height="25">
+                        <img src="assets/images/icons/check_icon.svg" alt="check icon" width="25" height="25">
                     </td>
                 </tr>
                 <tr>

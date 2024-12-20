@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+include("includes/header.php");
 ?>
 <div id="auth_container">
 <h1 class="subpage">Connexion</h1>
@@ -16,7 +16,7 @@ include("header.php");
 
     <div id="form_links">
         <a href="#" class="bouton">Mot de passe oublier</a>
-        <a href="#" class="bouton">Inscription</a>
+        <a href="inscription.php" class="bouton">Inscription</a>
     </div>    
     <input class="form_submit" type="submit" value="Connexion">
 </form>
