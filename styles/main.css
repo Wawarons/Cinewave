@@ -203,7 +203,7 @@ footer li {
 #end {
     display: flex;
     justify-content: space-around;
-    background: rgba(255, 255, 255, 0.32);
+    background: rgba(128, 128, 128,0.59);
 }
 
 #Sub {
@@ -280,8 +280,7 @@ form {
 
 .form_input {
     box-sizing: border-box;
-    background: rgba(25, 92, 151, 0.59);
-    border-radius: 80px;
+    border-bottom: rgba(25, 92, 151)solid;
     width: 100%;
     padding: 5px 10px;
     font-family: 'Arcane nine', sans-serif;
