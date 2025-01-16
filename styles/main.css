@@ -371,6 +371,10 @@ form {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin: 0 auto;
+    gap: 10px;
+    overflow-y:scroll ;
+    width: 90%;
 }
 
 .align_movie img:hover {

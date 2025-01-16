@@ -1,68 +1,58 @@
 <?php
 include("includes/header.php");
+include("includes/queries.php");
+$dataMovies= getFilms();
 ?>
 
 <div class="movie">
 
         <p>Film comedie</p>
-        <ul class="align_movie">
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-        </ul>
+        <div class="align_movie">
+            <?php
+            foreach ($dataMovies as $index => $film) {
+
+                echo "
+                 <div class='poster'>
+                    <a href='about.php?type=film&title=" . htmlspecialchars($film['title'], ENT_QUOTES, 'UTF-8') . "'>
+                        <img src='" . htmlspecialchars($film['image'], ENT_QUOTES, 'UTF-8') . "' alt='affiche de film'>
+                    </a>
+                 </div>
+                ";
+            }
+            ?>
+        </div>
+    <p>Film action</p>
+    <ul class="align_movie">
+        <?php
+        foreach ($dataMovies as $index => $film) {
+
+            echo "
+                 <li class='poster'>
+                    <a href='about.php?type=film&title=" . htmlspecialchars($film['title'], ENT_QUOTES, 'UTF-8') . "'>
+                        <img src='" . htmlspecialchars($film['image'], ENT_QUOTES, 'UTF-8') . "' alt='affiche de film'>
+                    </a>
+                 </li>
+                ";
+        }
+        ?>
+    </ul>
+    <p>Film science-fiction</p>
+    <ul class="align_movie">
+        <?php
+        foreach ($dataMovies as $index => $film) {
+
+            echo "
+                 <li class='poster'>
+                    <a href='about.php?type=film&title=" . htmlspecialchars($film['title'], ENT_QUOTES, 'UTF-8') . "'>
+                        <img src='" . htmlspecialchars($film['image'], ENT_QUOTES, 'UTF-8') . "' alt='affiche de film'>
+                    </a>
+                 </li>
+                ";
+        }
+        ?>
+    </ul>
 
 
-        <p>
-            Film d'action
-        </p>
-        <ul class="align_movie">
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-        </ul>
 
-
-        <p>Film fantasy</p>
-        <ul class="align_movie">
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-            <li class="poster">
-                <a href="#"> <img src="https://fr.web.img2.acsta.net/pictures/18/07/02/17/25/3643090.jpg" alt="mov" ></a>
-            </li>
-        </ul>
 
 </div>
