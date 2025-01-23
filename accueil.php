@@ -4,6 +4,9 @@ include('includes/queries.php');
 $topFilms = getFilms(15); // Récupère les 15 premiers films
 $topSeries = getSeries(15); // Récupère les 15 premières séries.
 $topAnimes = getAnimes(15); // Récupère les 15 premiers animés.
+
+var_dump($topFilms
+);
 ?>
     <!-- En-tête de la page d'accueil -->
     <div id="trailer_accueil">

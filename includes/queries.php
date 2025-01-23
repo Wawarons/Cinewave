@@ -149,17 +149,11 @@ function getFilms(int $limit = null): ?array
     global $connContent;
 
     $mySql = "
-    SELECT 
-        id, 
-        title, 
-        description, 
-        duree,
-        image, 
-        media_id, 
-        available 
-    FROM 
-        `film`
-    WHERE film.media_id = 1
+    SELECT film.id, film.description, film.title, film.image, category.id, category.name 
+    FROM
+        film
+    JOIN film_categories ON film.id=film_categories.film_id
+    JOIN category ON film_categories.category_id=category.id GROUP BY film.id
     ";
 
     if ($limit !== null) {
@@ -180,18 +174,11 @@ function getSeries(int $limit = null) : ?array
     global $connContent;
 
     $mySql = "
-    SELECT 
-        id, 
-        title, 
-        description, 
-         number_saison,
-    number_episode,
-        image, 
-        media_id, 
-        available 
-    FROM 
-        `serie`
-    WHERE serie.media_id = 2
+    SELECT serie.id, serie.description, serie.title, serie.image, category.id, category.name 
+    FROM
+        serie
+    JOIN serie_categories ON serie.id=serie_categories.serie_id
+    JOIN category ON serie_categories.category_id=category.id GROUP BY serie.id
     ";
 
     if ($limit !== null) {
@@ -213,33 +200,18 @@ function getAnimes(int $limit = null): ?array
 
     //Recherche les animés dans la partie des films et séries.
     $mySql = "
-        SELECT 
-            id, 
-            title, 
-            description, 
-            image, 
-            media_id, 
-            available 
-        FROM 
-            `film`
-        WHERE film.media_id = 3
-        UNION ALL 
-        SELECT 
-            id, 
-            title, 
-            description, 
-            image, 
-            media_id, 
-            available 
-        FROM 
-            `serie`
-        WHERE serie.media_id = 3
+        SELECT serie.id, serie.description, serie.title, serie.image, category.id, category.name 
+        FROM
+            serie
+        JOIN serie_categories ON serie.id=serie_categories.serie_id
+        JOIN category ON serie_categories.category_id=category.id WHERE category.name='Anime' GROUP BY serie.id
+        UNION
+        SELECT film.id, film.description, film.title, film.image, category.id, category.name 
+        FROM
+            film
+        JOIN film_categories ON film.id=film_categories.film_id
+        JOIN category ON film_categories.category_id=category.id WHERE category.name='Anime' GROUP BY film.id
         ";
-
-    //Applique une limite si '$limit' est défini.
-    if ($limit !== null) {
-        $mySql .= " LIMIT " . $limit;
-    }
 
     $result = mysqli_query($connContent, $mySql);
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
