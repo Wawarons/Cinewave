@@ -358,7 +358,59 @@ form {
 
 /* page films et series
  */
-.align_movie img {
+
+/* Conteneur principal */
+.containt_affiche {
+    flex:1;
+    max-width: 18%;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    margin: 15px; /* Espacement entre les affiches */
+}
+
+/* Conteneur de l'affiche */
+.poster {
+    position: relative; /* Nécessaire pour positionner .rate-container */
+    width: 200px; /* Largeur de l'affiche (modifiable selon vos besoins) */
+    height: auto; /* Maintenir les proportions */
+}
+
+/* Image de l'affiche*/
+.poster img.poster-image {
+    display: block;
+    border-radius: 8px; /* Coins arrondis pour l'image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre autour de l'image */
+}
+
+/* Conteneur pour la note et l'icône */
+.rate-container {
+    position: absolute; /* Positionnement par rapport à .poster */
+    bottom: 10px; /* Distance depuis le bas de l'image */
+    right: 10px; /* Distance depuis le côté droit de l'image */
+    background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent noir */
+    color: white; /* Texte blanc */
+    padding: 5px 8px; /* Espacement interne */
+    border-radius: 15px; /* Arrondir le fond */
+    display: flex; /* Alignement horizontal de la note et de l'icône */
+    align-items: center; /* Centrer verticalement les éléments */
+    gap: 5px; /* Espacement entre le texte et l'icône */
+}
+
+/* Texte de la note */
+.rating-text {
+    font-size: 14px; /* Taille de la police */
+    font-weight: bold; /* Mettre en gras */
+    line-height: 1; /* Supprimer l'espacement vertical supplémentaire */
+}
+
+/* Icône (cœur) */
+.rate-container img {
+    width: 16px; /* Largeur de l'icône */
+    height: 16px; /* Hauteur de l'icône */
+}
+
+.poster-image {
 
     width: 200px;
     height: 300px;
@@ -368,14 +420,18 @@ form {
 
 .align_movie {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     margin: 0 auto;
     gap: 10px;
     overflow-y:scroll ;
-    width: 90%;
+    width: 95%;
 }
-
+.movie-row {
+    display: flex;
+    justify-content: space-between; /* Espacement uniforme entre les affiches */
+    gap: 15px; /* Espacement horizontal entre les affiches */
+}
 .align_movie img:hover {
     transform: scale(1.05);
     box-shadow: 0 0 4px 5px #ffffff;
