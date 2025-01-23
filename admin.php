@@ -1,5 +1,5 @@
 <?php
-include('header.php')
+include('./includes/header.php')
 ?>
 <div class="admin_menu">
 <p class="menu_text">Menu</p>
