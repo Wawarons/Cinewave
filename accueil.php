@@ -3,10 +3,6 @@ include('includes/header.php');
 include('includes/queries.php');
 $topFilms = getFilms(15); // Récupère les 15 premiers films
 $topSeries = getSeries(15); // Récupère les 15 premières séries.
-$topAnimes = getAnimes(15); // Récupère les 15 premiers animés.
-
-var_dump($topFilms
-);
 ?>
     <!-- En-tête de la page d'accueil -->
     <div id="trailer_accueil">
@@ -53,26 +49,6 @@ var_dump($topFilms
             }
             ?>
         </div>
-    </div>
-
-    <!-- Conteneur des animés -->
-    <div class="top">
-        <h2>Animés</h2>
-        <div class="top_contenu">
-            <?php
-            foreach ($topAnimes as $index => $anime) {
-
-                echo "
-                 <div class='poster'>
-                    <a href='about.php?type=anime&title=" . htmlspecialchars($anime['title'], ENT_QUOTES, 'UTF-8'). "'>
-                        <img src='" . htmlspecialchars($anime['image'], ENT_QUOTES, 'UTF-8') . "' alt='affiche de film'>
-                    </a>
-                 </div>
-                ";
-            }
-            ?>
-        </div>
-
     </div>
 
 <?php include('includes/footer.php'); ?>

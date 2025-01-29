@@ -26,6 +26,7 @@ function getContentConnection(): mysqli {
     $server = "localhost";
     $username = "root";
 
+
     $conn = new  mysqli($server, $username, "", "cinewave");
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

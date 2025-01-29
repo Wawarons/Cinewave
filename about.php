@@ -25,6 +25,7 @@ if ($type != null && $title != null) {
             header("Location: accueil.php");
             break;
     }
+    $item =  current($item);
 }
 
 function formatedHours(int $time)
@@ -39,23 +40,41 @@ function formatedHours(int $time)
 //    header("Location: accueil.php");
 ?>
 
+<div id="bg-article">
+    <div id="blur"></div>
+</div>
 <div class="movie_art">
-
-    <img src="<?php echo $item['image'] ?? "https://placehold.co/200x300" ?>" alt="affiche de film"/>
-    <div class="desc_art">
-        <div class="try_art">
-            <div class="art">
-                <h2><?php echo $item['title'] ?></h2>
-                <p>Genre: Comedie</p>
-                <?php
-                if (isset($item['number_saison']) && isset($item['number_episode'])) {
-                    echo "<p>Nombre d'épisodes: " . $item['number_episode'] . "</p>
-                             <p>Nombre de saisons: " . $item['number_saison'] . "</p>";
-                } elseif (isset($item['duree'])) {
-                    echo "<p>Durée: " . formatedHours($item['duree']) . "</p>";
-                }
-                ?>
+    <style>
+        #bg-article {
+            background: url(<?= $item['image'] ?>) center center;
+            background-size: cover;
+        }
+    </style>
+    <img id="poster-article" src="<?php echo $item['image'] ?? "https://placehold.co/200x300" ?>" alt="affiche de film"/>
+    <div class="article">
+                <div id="article-header">
+                <h2><?= $item['title'] ?></h2>
+                <div id="category-container">
+                    <?php
+                        foreach ($item['categories'] as $category) {
+                            echo "<p class='category'>$category</p>";
+                        }
+                    ?>
+                </div>
+                </div>
+                <p id="article-description"><?= $item['description'] ?></p>
+                <div id="data-article">
+                    <?php
+                    if (isset($item['number_saison']) && isset($item['number_episode'])) {
+                        echo
+                            "<div id='count'>
+                                <p> Saisons: <span class='count-value'>" . $item['number_saison'] . "</span></p>   
+                                <p> Episodes: <span class='count-value'>" . $item['number_episode'] . "</span></p>                     
+                            </div>";
+                    } elseif (isset($item['duration'])) {
+                        echo "<p>Durée: " . formatedHours($item['duration']) . "</p>";
+                    }
+                    ?>
+                </div>
             </div>
-            <p class="desc"><?php echo "<strong>Résumé:  </strong><br></br>", $item['description'] ?></p>
-        </div>
-    </div>
+

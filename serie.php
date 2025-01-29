@@ -13,11 +13,11 @@ $chunks = array_chunk($dataSeries, 5);
     // Parcourir les sections
     foreach ($chunks as $sectionIndex => $series) {
         echo "<div class='movie-row'>"; // Chaque section devient une ligne
-        foreach ($dataSeries as $series) {
+        foreach ($series as $serie) {
             echo "<div class='containt_affiche'>
                      <div class='poster'>
-                        <a href='about.php?type=film&title=" . htmlspecialchars($series['title'], ENT_QUOTES, 'UTF-8') . "'>
-                            <img src='" . htmlspecialchars($series['image'], ENT_QUOTES, 'UTF-8') . "' alt='affiche de series' class='poster-image'>
+                        <a href='about.php?type=serie&title=" . htmlspecialchars($serie['title'], ENT_QUOTES, 'UTF-8') . "'>
+                            <img src='" . htmlspecialchars($serie['image'], ENT_QUOTES, 'UTF-8') . "' alt='affiche de series' class='poster-image'>
                         </a>
                         <div class='rate-container'>
                             <span class='rating-text'>4.2/5</span>

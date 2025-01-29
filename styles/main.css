@@ -437,47 +437,104 @@ form {
     box-shadow: 0 0 4px 5px #ffffff;
 }
 
+#bg-article {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+}
+
+#bg-article #blur {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    backdrop-filter: blur(5px);
+}
+
 /* page article film et series*/
 .movie_art {
-    background-color: rgba(6, 79, 101, 0.53);
+    background-color: rgb(21, 28, 28);
     border: solid 2px white;
     border-radius: 5px;
     width: 80%;
+    min-height: 65vh;
     margin: 10% auto;
-
+    display: flex;
+    flex-direction: row;
 }
 
-.movie_art img {
-    width: 400px;
+.movie_art h2 {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 0;
+    color: #088FC0;
+}
+
+.movie_art #poster-article {
+    width: 350px;
     height: auto;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 15px;
     top: 15px;
 }
 
-.desc_art img {
-    width: 300px;
-    height: 400px;
-}
-
-.desc_art {
-    display: flex;
-}
-
-.desc {
-    width: 40%;
-}
-
-.try_art {
+#article-header {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    justify-content: space-around;
+    gap: 15px;
+    align-items: center;
+    width: fit-content;
 }
 
-.art {
+#article-header #category-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: fit-content;
+}
+
+#article-header #category-container .category {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+    background: #088FC0;
+}
+
+#article-description {
+    width: 95%;
+    background: #121212;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 10px;
+    border: 1px solid #088FC0;
+}
+
+#data-article {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#data-article #count {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-around;
+    color: #088FC0;
+    font-weight: bold;
+}
+
+#data-article #episodes-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.article {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* Page Abonnement */

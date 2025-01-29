@@ -20,7 +20,6 @@
                 <a href="accueil.php" class="navlink">Accueil</a>
                 <a href="film.php" class="navlink">Films</a>
                 <a href="serie.php" class="navlink">Séries</a>
-                <a href="manga.php" class="navlink">Animés</a>
                 <a href="abonnement.php" class="navlink" id="abonnement_link">S'abonner</a>
             </div>
                 <form action="#">

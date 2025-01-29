@@ -13,6 +13,55 @@ include('config/config.php');
 $connContent = getContentConnection();
 
 
+function formatSeriesCategories($result): array
+{
+    $seriesWithCategories = array();
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $serie_id = $row['id'];
+        if (!isset($seriesWithCategories[$serie_id])) {
+            $seriesWithCategories[$serie_id] = [
+                'serie_id' => $row['id'],
+                'title' => $row['title'],
+                'description' => $row['description'],
+                'number_saison' => $row['number_saison'],
+                'number_episode' => $row['number_episode'],
+                'image' => $row['image'],
+                'categories' => []
+            ];
+        }
+
+        $seriesWithCategories[$serie_id]['categories'][] =  $row['name'];
+    }
+
+    return $seriesWithCategories;
+}
+
+function formatFilmsCategories($result): array
+{
+    if(!$result->num_rows > 0){
+        return [];
+    }
+    $filmsWithCategories = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        $film_id = $row['id'];
+        if (!isset($filmsWithCategories[$film_id])) {
+            $filmsWithCategories[$film_id] = [
+                'film_id' => $row['id'],
+                'title' => $row['title'],
+                'description' => $row['description'],
+                'duration' => $row['duree'],
+                'image' => $row['image'],
+                'categories' => []
+            ];
+        }
+
+        $filmsWithCategories[$film_id]['categories'][] =  $row['name'];
+    }
+
+    return $filmsWithCategories;
+}
+
 /**
  * Obtenir des informations sur une série grâce à son titre.
  * Le tableau retournée contient les informations suivantes:
@@ -30,14 +79,18 @@ function getSerieByTitle(string $title): ?array
     global $connContent;
     $mySql = "
     select 
+        serie.id,
         title,
         description,
         image,
          number_saison,
         number_episode,
-        age_limite 
+        age_limite,
+        category.name
     from 
         serie 
+    JOIN serie_categories ON serie.id=serie_categories.serie_id
+    JOIN category ON serie_categories.category_id=category.id
     where 
         serie.title=?
     ";
@@ -45,8 +98,8 @@ function getSerieByTitle(string $title): ?array
     $query = $connContent->prepare($mySql);
     $query->bind_param('s', $title);
     $query->execute();
-
-    return $query->get_result()->fetch_assoc();
+    $result = $query->get_result();
+    return formatSeriesCategories($result);
 }
 
 /**
@@ -65,77 +118,27 @@ function getFilmByTitle(string $title): ?array
     global $connContent;
     $mySql = "
     select 
+        film.id,
         title,
         duree,
         description,
+        duree,
         image,
-        age_limite      
+        age_limite,
+        category.name
     from 
         film 
+    JOIN film_categories ON film.id=film_categories.film_id
+    JOIN category ON film_categories.category_id=category.id
     where 
-        film.title=?
+        film.title=?;
     ";
 
     $query = $connContent->prepare($mySql);
     $query->bind_param('s', $title);
     $query->execute();
-
-    return $query->get_result()->fetch_assoc();
-}
-
-/**
- * Obtenir des informations sur un animé grâce à son titre.
- * Le tableau retournée contient les informations suivantes:
- *    - title: Titre de l'animé
- *    - description: Description de l'animé
- *    - image: Affiche de l'animé
- *    - duree: Durée de l'animé
- *    - age_limite: Âge de visionnage conseillé
- * @param string $title Titre de l'anime
- * @Return array|null Les informations de l'animé sous forme de tableau ou null en cas d'erreur.
- */
-function getAnimeByTitle(string $title): ?array
-{
-    global $connContent;
-    $mySql = "
-    select 
-        title,
-        description,
-        duree,
-        image,
-        age_limite 
-    from 
-        film 
-    where 
-        film.title=?
-    ";
-    //Effectu une première recherche sur les films
-    $query = $connContent->prepare($mySql);
-    $query->bind_param('s', $title);
-    $query->execute();
-    $result = $query->get_result()->fetch_assoc();
-
-    //Si l'animé n'a pas été trouvé dans les films.
-    if(!$result) {
-        $mySql = "
-            select 
-                title,
-                description,
-                number_saison,
-                number_episode,
-                image,
-                age_limite 
-            from serie 
-            where serie.title=?";
-
-        //Effectu une recherche de l'animé dans les séries.
-        $query = $connContent->prepare($mySql);
-        $query->bind_param('s', $title);
-        $query->execute();
-        $result = $query->get_result()->fetch_assoc();
-    }
-
-    return $result;
+    $result = $query->get_result();
+    return formatFilmsCategories($result);
 }
 
 
@@ -149,19 +152,19 @@ function getFilms(int $limit = null): ?array
     global $connContent;
 
     $mySql = "
-    SELECT film.id, film.description, film.title, film.image, category.id, category.name 
+    SELECT film.id, film.description, film.title, film.image, film.duree, category.name 
     FROM
         film
     JOIN film_categories ON film.id=film_categories.film_id
-    JOIN category ON film_categories.category_id=category.id GROUP BY film.id
+    JOIN category ON film_categories.category_id=category.id
     ";
 
     if ($limit !== null) {
-        $mySql .= " LIMIT " . $limit;
+        $mySql .= " LIMIT " . $limit . ";";
     }
 
     $result = mysqli_query($connContent, $mySql);
-    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return formatFilmsCategories($result);
 }
 
 /**
@@ -174,7 +177,8 @@ function getSeries(int $limit = null) : ?array
     global $connContent;
 
     $mySql = "
-    SELECT serie.id, serie.description, serie.title, serie.image, category.id, category.name 
+    SELECT serie.id, serie.description, serie.title, serie.image,  serie.number_saison,
+        serie.number_episode, category.name 
     FROM
         serie
     JOIN serie_categories ON serie.id=serie_categories.serie_id
@@ -182,37 +186,31 @@ function getSeries(int $limit = null) : ?array
     ";
 
     if ($limit !== null) {
-        $mySql .= " LIMIT " . $limit;
+        $mySql .= " LIMIT " . $limit . ";";
     }
 
     $result = mysqli_query($connContent, $mySql);
-    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return formatSeriesCategories($result);
 }
 
-/**
- * Obtenir la liste des animés.
- * @param int|null $limit Limite le nombre d'animés retournés.
- * @return array|null Retourne la liste des animés sous forme de tableau ou null en cas d'erreur.
- */
-function getAnimes(int $limit = null): ?array
-{
-    global $connContent;
+function getSeriesByCategory(string $categoryName): ?array {
+    $mySQL = "
+        SELECT s.id, s.title, s.description, s.image, s.duree, category.name
+        FROM serie s
+        JOIN serie_categories sc ON s.id = sc.serie_id
+        JOIN category c ON sc.category_id = c.id
+        WHERE c.name = $categoryName;";
 
-    //Recherche les animés dans la partie des films et séries.
-    $mySql = "
-        SELECT serie.id, serie.description, serie.title, serie.image, category.id, category.name 
-        FROM
-            serie
-        JOIN serie_categories ON serie.id=serie_categories.serie_id
-        JOIN category ON serie_categories.category_id=category.id WHERE category.name='Anime' GROUP BY serie.id
-        UNION
-        SELECT film.id, film.description, film.title, film.image, category.id, category.name 
-        FROM
-            film
-        JOIN film_categories ON film.id=film_categories.film_id
-        JOIN category ON film_categories.category_id=category.id WHERE category.name='Anime' GROUP BY film.id
-        ";
+        return null;
+}
 
-    $result = mysqli_query($connContent, $mySql);
-    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+function getFilmsByCategory(string $categoryName): ?array {
+    $mySQL = "
+        SELECT f.id, f.title, f.description, f.image, f.duree, category.name
+        FROM film f
+        JOIN film_categories fc ON f.id = fc.film_id
+        JOIN category c ON fc.category_id = c.id
+        WHERE c.name = $categoryName;";
+
+    return null;
 }
