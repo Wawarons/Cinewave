@@ -6,14 +6,50 @@ include('../config/config.php');
 $connContent = getAuthConnection();
 
 
-function getUserByUsernameOrEmail(string $username = null, string $email = null): ?array {
+function getUserByEmail(string $email): ?array {
     global $connContent;
+
     $mySql = "
     SELECT 
         user_id,
         username,
         email,
         password
+    FROM 
+        authentication
+    WHERE
+        email = ?;
+";
+
+    $query = $connContent->prepare($mySql);
+
+// Check if the statement was prepared successfully
+    if ($query === false) {
+        die('MySQL prepare error: ' . $connContent->error);
+    }
+// Bind parameters (assuming $username and $email are the user inputs)
+    $query->bind_param('s', $email);
+// Execute the query
+    $query->execute();
+
+// Optional: Check if the query was successful
+    if ($result = $query->get_result()) {
+        return $result->fetch_assoc();
+        // Further processing...
+    } else {
+        return null;
+    }
+
+
+}
+
+function getUserByUsernameOrEmail(string $username = null, string $email = null): ?array {
+    global $connContent;
+    $mySql = "
+    SELECT 
+        user_id,
+        username,
+        email
     FROM 
         authentication
     WHERE
@@ -39,6 +75,12 @@ function getUserByUsernameOrEmail(string $username = null, string $email = null)
         return null;
     }
 
+
+}
+
+function checkPassword(string $email, string $password): bool {
+    $user = getUserByEmail($email);
+    return $user != null && hash_equals($password, $user['password']);
 
 }
 

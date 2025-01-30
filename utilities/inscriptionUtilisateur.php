@@ -3,6 +3,7 @@ session_start();
 require_once '../includes/authQueries.php';
 
 if(isset($_POST["email"]) && isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["confirm_password"])){
+    unset($_SESSION["errors_inscription"]);
     $username = $_POST["username"];
     $email = $_POST["email"];
     $pass = $_POST["password"];

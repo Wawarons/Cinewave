@@ -1,17 +1,24 @@
 <?php
+session_start();
+var_dump($_SESSION);
 include("includes/header.php");
 ?>
 <div id="auth_container">
 <h1 class="subpage">Connexion</h1>
-<form id="inscription">
+    <?php
+    if(isset($_SESSION["errors_connexion"])){
+        echo "<div class='form_error'><p>".$_SESSION["errors_connexion"][0]."</p></div>";
+    }
+    ?>
+<form id="connexion" method="POST" action="utilities/connexionUtilisateur.php">
     <div class="form_input">
-        <label for="email" "> Mail:</label>
-        <input type=" email" name="email" class="text">
+        <label for="email"> Mail:</label>
+        <input id="email" type="email" name="email" class="text" required/>
     </div>
 
     <div class="form_input">
-        <label for="mot de passe">Mot de passe:</label>
-        <input type="password" name="password" class="text">
+        <label for="password">Mot de passe:</label>
+        <input id="password" type="password" name="password" class="text" required>
     </div>
 
     <div id="form_links">
