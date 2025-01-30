@@ -281,7 +281,7 @@ form {
     flex-direction: column;
     justify-content: space-between;
     gap: 15px;
-    width: 80%;
+    width: 62%;
     height: 50vh;
     margin: 50px auto;
 }
@@ -292,6 +292,13 @@ form {
     width: 100%;
     padding: 5px 10px;
     font-family: 'Arcane nine', sans-serif;
+    margin-top: 1%;
+}
+
+
+.submit{
+    width: 6%;
+    margin-left: 44%;
 }
 
 .text {
