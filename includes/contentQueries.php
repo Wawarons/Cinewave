@@ -214,3 +214,4 @@ function getFilmsByCategory(string $categoryName): ?array {
 
     return null;
 }
+

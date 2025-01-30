@@ -1,6 +1,6 @@
 <?php
 include("includes/header.php");
-include("includes/queries.php");
+include("includes/contentQueries.php");
 $dataManga = getAnimes();
 ?>
 

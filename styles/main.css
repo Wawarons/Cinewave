@@ -22,9 +22,8 @@ header {
 }
 
 header nav {
-    position: absolute;
+    position: relative;
     top: 0;
-    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -276,6 +275,16 @@ footer li {
 }
 
 /* inscription */
+.form_error {
+    padding: 5px 10px;
+    width: fit-content;
+    margin: 5px auto;
+    border-radius: 10px;
+    border: #d65050;
+    background: rgba(255, 94, 94, 0.79);
+    color: #FFFFFF;
+}
+
 form {
     display: flex;
     flex-direction: column;

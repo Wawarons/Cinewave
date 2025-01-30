@@ -1,6 +1,6 @@
 <?php
 include('includes/header.php');
-include('includes/queries.php');
+include('includes/contentQueries.php');
 $topFilms = getFilms(15); // Récupère les 15 premiers films
 $topSeries = getSeries(15); // Récupère les 15 premières séries.
 ?>

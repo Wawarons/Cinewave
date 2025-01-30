@@ -1,3 +1,4 @@
+<?php session_abort() ?>
 <!DOCTYPE html>
 <html lang="fr">
 
