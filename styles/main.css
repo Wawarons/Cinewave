@@ -76,6 +76,7 @@ header #searchbar {
 header #logo_container {
     display: flex;
     align-items: center;
+    margin-left: 1%;
 }
 
 .cine {
