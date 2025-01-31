@@ -21,6 +21,37 @@ header {
     width: 100%;
 }
 
+.popup {
+    background: #373737;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px #088FC0 solid;
+    position: absolute;
+    z-index: 9999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup h2 {
+    text-align: center;
+    color: #088FC0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.popup #close, .popup a {
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 5px;
+    width: fit-content;
+    margin: 10px auto;
+    border: none;
+    outline: none;
+    background: #088FC0;
+    color: white;
+}
+
 header nav {
     position: relative;
     top: 0;
