@@ -50,5 +50,21 @@ $topSeries = getSeries(15); // Récupère les 15 premières séries.
             ?>
         </div>
     </div>
+<div class="popup" id="popup">
+        <h2>Offre Spéciale !</h2>
+        <p>Abonnez-vous dès maintenant et profitez de 20% de réduction !</p>
+        <a  href="abonnement.php">En profiter</a>
+        <button id="close" onclick="closePopup()">Fermer</button>
+    </div>
 
+    <script>
+        window.onload = function() {
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        };
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
 <?php include('includes/footer.php'); ?>
