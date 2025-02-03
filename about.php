@@ -2,60 +2,90 @@
 include('includes/header.php');
 include('includes/contentQueries.php');
 
-if (isset($_GET['type']) && isset($_GET['title'])) {
-    $type = $_GET['type'];
-    $title = $_GET['title'];
+$movieId = null;
+$seriesId = null;
+$item = [];
+$credits = [];
+
+if (isset($_GET['movie_id'])) {
+    $movieId = $_GET['movie_id'];
+    $item = getFilmById($movieId);
+    $credits = getFilmCredits($movieId);
+} else if (isset($_GET['serie_id'])) {
+    $serieId = $_GET['serie_id'];
+    $item = getSerieByID($serieId);
+    $credits = getSerieCredits($serieId);
 } else {
     header("Location: accueil.php");
 }
 
-if ($type != null && $title != null) {
-    $title = stripslashes($title);
-    switch ($type) {
-        case 'serie':
-            $item = getSerieByTitle($title);
-            break;
-        case 'film':
-            $item = getFilmByTitle($title);
-            break;
-        case 'anime':
-            $item = getAnimeByTitle($title);
-            break;
-        default:
-            header("Location: accueil.php");
-            break;
-    }
-}
-
-function formatedHours(int $time)
+function formatedHours(float $time)
 {
-    $hours = floor($time / 3600);
-    $minutes = floor($time / 60 % 60);
+    $hours = floor($time / 60);
+    $minutes = $time % 60;
 
     return $hours . "h" . $minutes . "m";
 }
 
-//if (!$item)
-//    header("Location: accueil.php");
+$title = $item['title'] ?? $item['name'];
+$release_date = $item['release_date'] ?? $item['first_air_date'];
 ?>
 
-<div class="movie_art">
+<div id="about-container">
+    <div id="about-header">
+        <img id="poster" src="https://image.tmdb.org/t/p/w400<?= $item['poster_path'] ?>" alt="<?= $title ?>"/>
 
-    <img src="<?php echo $item['image'] ?? "https://placehold.co/200x300" ?>" alt="affiche de film"/>
-    <div class="desc_art">
-        <div class="try_art">
-            <div class="art">
-                <h2><?php echo $item['title'] ?></h2>
-                <p>Genre: Comedie</p>
-                <?php
-                if (isset($item['number_saison']) && isset($item['number_episode'])) {
-                    echo "<p>Nombre d'épisodes: " . $item['number_episode'] . "</p>
-                             <p>Nombre de saisons: " . $item['number_saison'] . "</p>";
-                } elseif (isset($item['duree'])) {
-                    echo "<p>Durée: " . formatedHours($item['duree']) . "</p>";
-                }
-                ?>
+        <div id="data">
+            <div>
+                <h1><?= $title ?></h1>
+                <div id="about-genres">
+                    <?php
+                    foreach ($item['genres'] as $genre) {
+
+                        echo "<p class='genre'>" . $genre['name'] . "</p>";
+                    }
+                    ?>
+                </div>
             </div>
-            <p class="desc"><?php echo "<strong>Résumé:  </strong><br></br>", $item['description'] ?></p>
+            <div id="about-description">
+                <p>
+                    <?= $item['overview'] ?>
+                </p>
+            </div>
+            <div id="about-details">
+                <p><span class="details">Réalisation:</span> <?= $release_date ?></p>
+                <p><span class="details">Pays de réalisation:</span> <?= $item['production_countries'][0]['name'] ?></p>
+                <?php
+                    if($movieId) {
+                        echo "<p><span class='details'>Durée:</span> ".formatedHours($item['runtime']). "</p>";
+                    } else {
+                        echo "
+                            <p><span class='details'>Nombre d'épisodes:</span> ". $item['number_of_episodes']. "</p>
+                            <p><span class='details'>Nombre de saisons:</span> ". $item['number_of_seasons']. "</p>";
+                    }
+                ?>
+
+                <p><span class="details">Note:</span>
+                    <?= round($item['vote_average'], 1) ?>
+                </p>
+            </div>
         </div>
     </div>
+</div>
+<div id="section-casting">
+    <h2 id="cast-title">Casting</h2>
+    <div id="casting-container">
+        <?php
+            foreach ($credits['cast'] as $people) {
+                $profileImage = !empty($people['profile_path'])
+                    ? "https://image.tmdb.org/t/p/w200" . $people['profile_path']
+                    : "https://placehold.co/200x300?text=No+Image";
+
+                echo "<img class='cast-people' title='" . htmlspecialchars($people['name'], ENT_QUOTES) . "' 
+                        src='" . $profileImage . "' 
+                        alt='" . htmlspecialchars($people['name'], ENT_QUOTES) . "'>";
+
+            }
+        ?>
+    </div>
+</div>

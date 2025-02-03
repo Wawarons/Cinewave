@@ -18,20 +18,4 @@ function getAuthConnection(): mysqli
     return $conn;
 }
 
-/**
- * Permet d'établir une connexion avec la base de données contenant les films et séries.
- * @return mysqli une connexion à la base de données
- * */
-function getContentConnection(): mysqli {
-    $server = "localhost";
-    $username = "root";
-
-
-    $conn = new  mysqli($server, $username, "", "cinewave");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    return $conn;
-}
 
