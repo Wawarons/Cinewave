@@ -12,5 +12,36 @@ include('./includes/header.php')
     <button class="button_menu">Gestion des Commentaires et Avis</button>
     <button class="button_menu">Sécurité et Permissions</button>
     <button class="button_menu">Extensions et Modules</button>
-
+    <button class="button_menu" onclick="showGraph()">Afficher la Carte Graphique</button>
 </div>
+<div id="graph" class="hidden">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function showGraph() {
+        document.getElementById('graph').classList.toggle('hidden');
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
+                datasets: [{
+                    label: 'Visites',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: 'rgba(0, 0, 0, 0)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+</script>
