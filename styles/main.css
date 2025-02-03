@@ -359,9 +359,9 @@ form {
     text-align: center;
     left: 1%;
     border: 1px solid rgba(25, 92, 151, 0.7);
-    ;
+
     width: 11%;
-    height: auto;
+    height: 52rem;
 
     background-color: rgba(25, 92, 151, 0.7);
 }
@@ -383,6 +383,15 @@ form {
     width: 157px;
 
 }
+
+#myChart {
+    !important;
+height: 50%;
+    width: 50%;
+    margin-left: 17%;
+}
+
+
 
 /* page films et series
  */
