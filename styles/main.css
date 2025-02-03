@@ -107,6 +107,7 @@ header #searchbar {
 header #logo_container {
     display: flex;
     align-items: center;
+    margin-left: 1%;
 }
 
 .cine {
@@ -391,7 +392,7 @@ form {
     border: 1px solid rgba(25, 92, 151, 0.7);
     ;
     width: 11%;
-    height: 86%;
+    height: auto;
 
     background-color: rgba(25, 92, 151, 0.7);
 }
@@ -408,6 +409,9 @@ form {
     text-decoration: none;
     color: #121212;
     font-weight: bold;
+    margin-top: 5%;
+    height: 66px;
+    width: 157px;
 
 }
 
