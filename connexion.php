@@ -1,6 +1,6 @@
 <?php
-session_start();
 include("includes/header.php");
+var_dump($_SESSION);
 ?>
 <div id="auth_container">
 <h1 class="subpage">Connexion</h1>

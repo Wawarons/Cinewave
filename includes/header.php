@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if(isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
@@ -37,7 +39,7 @@ if(isset($_SESSION['user'])) {
                     <input type="text" placeholder="From..." id="searchbar">
                 </form>
 
-            <a href="<?php echo $user ? "compte.php":"connexion.php" ?>" class="navlink">
+            <a href="<?= empty($user) ? "connexion.php":"profile.php" ?>" class="navlink">
                 <img src="assets/images/header/connexion.svg" alt="logo cinewave" width="25" height="25">
             </a>
         </nav>
