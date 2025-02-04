@@ -149,7 +149,38 @@ function getPopularSeries(int $page = 1) : ?array
     return $response;
 
 }
+function getEpisodesSerie(int $id, int $saison = 1) : ?array
+{
 
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL => "https://api.themoviedb.org/3/tv/$id/season/$saison?api_key=7ae5b548b2b7688fe71f95dadd7b7b1d",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => [
+            "accept: application/json"
+        ],
+    ]);
+
+    $response = curl_exec($curl);
+
+    if ($response === false) {
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        return null;
+    }
+
+
+    $response = json_decode($response, true);
+
+    curl_close($curl);
+
+    return $response;
+
+}
 function getFilmCredits(int $id) : ?array
 {
 

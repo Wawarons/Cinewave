@@ -15,6 +15,7 @@ if (isset($_GET['movie_id'])) {
     $serieId = $_GET['serie_id'];
     $item = getSerieByID($serieId);
     $credits = getSerieCredits($serieId);
+    $episodes = getEpisodesSerie($serieId);
 } else {
     header("Location: accueil.php");
 }
@@ -72,6 +73,17 @@ $release_date = $item['release_date'] ?? $item['first_air_date'];
         </div>
     </div>
 </div>
+<?php
+if (isset($_GET['serie_id'])) {
+    foreach ($episodes['episodes'] as $episode)
+    {
+        echo "<div class='nombre episodes'><p>".$episode['name']."</p>
+        <img src='https://image.tmdb.org/t/p/w200".$episode['still_path']."' alt='".$episode['name']."'>
+        <p>".$episode['overview']."</p>
+ </div>";
+    }
+}
+?>
 <div id="section-casting">
     <h2 id="cast-title">Casting</h2>
     <div id="casting-container">
