@@ -851,3 +851,28 @@ td {
 .disabled {
     background-color: #410244;
 }
+
+.account-choice {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.account-choice .bloc {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px;
+}
+
+.account-choice .bloc .choice {
+    text-align: center;
+    width: 250px;
+    height: 150px;
+    margin: 10px;
+    border-radius: 5px;
+    background: #088FC0;
+    border: 2px solid #FFFFFF;
+}

@@ -1,14 +1,13 @@
 <?php
 session_start();
-var_dump($_SESSION);
 include("includes/header.php");
 ?>
 <div id="auth_container">
 <h1 class="subpage">Connexion</h1>
     <?php
-    if(isset($_SESSION["errors_connexion"])){
-        echo "<div class='form_error'><p>".$_SESSION["errors_connexion"][0]."</p></div>";
-    }
+        if(isset($_SESSION["errors_connexion"])){
+            echo "<div class='form_error'><p>".$_SESSION["errors_connexion"][0]."</p></div>";
+        }
     ?>
 <form id="connexion" method="POST" action="utilities/connexionUtilisateur.php">
     <div class="form_input">

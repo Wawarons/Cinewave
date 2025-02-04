@@ -1,4 +1,13 @@
-<?php session_abort() ?>
+<?php
+
+session_start();
+
+if(isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -28,7 +37,7 @@
                     <input type="text" placeholder="From..." id="searchbar">
                 </form>
 
-            <a href="connexion.php" class="navlink">
+            <a href="<?php echo $user ? "compte.php":"connexion.php" ?>" class="navlink">
                 <img src="assets/images/header/connexion.svg" alt="logo cinewave" width="25" height="25">
             </a>
         </nav>

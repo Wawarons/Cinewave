@@ -1,8 +1,11 @@
 <?php
 include('includes/header.php');
 include('includes/contentQueries.php');
+
+
 $films = getPopularFilms(); // Récupère les 15 premiers films
 $series = getPopularSeries();
+
 ?>
     <!-- En-tête de la page d'accueil -->
     <div id="trailer_accueil">
