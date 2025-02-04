@@ -247,4 +247,71 @@ function getSerieCredits(int $id) : ?array
 
 }
 
+function getSerieSimilaire(int $id) : ?array
+{
+
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL => "https://api.themoviedb.org/3/tv/$id/similar?api_key=7ae5b548b2b7688fe71f95dadd7b7b1d&language=fr-FR&page=1",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => [
+            "accept: application/json"
+        ],
+    ]);
+
+    $response = curl_exec($curl);
+
+    if ($response === false) {
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        return null;
+    }
+
+
+    $response = json_decode($response, true);
+
+    curl_close($curl);
+
+    return $response;
+
+}
+
+
+function getFilmSimilaire(int $id) : ?array
+{
+
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL => "https://api.themoviedb.org/3/movie/$id/similar?api_key=7ae5b548b2b7688fe71f95dadd7b7b1d&language=fr-FR&page=1",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => [
+            "accept: application/json"
+        ],
+    ]);
+
+    $response = curl_exec($curl);
+
+    if ($response === false) {
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        return null;
+    }
+
+
+    $response = json_decode($response, true);
+
+    curl_close($curl);
+
+    return $response;
+
+}
+
 

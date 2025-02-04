@@ -179,7 +179,6 @@ header #navlinks {
     width: fit-content;
     padding: 10px 20px;
     margin: 50px auto;
-    border-bottom: 2px solid #088FC0;
 }
 
 .top-films {
@@ -649,7 +648,7 @@ form {
     gap: 20px;
     width: 100%;
     padding: 10px;
-    background: #373737;
+    background: #121212;
     margin: 15px;
     border: 1px solid #088FC0;
 }
@@ -875,6 +874,20 @@ td {
     transform: scale(1.1);
 }
 
+#saison-container {
+    width: 100%;
+    margin: 50px 10px;
+}
+
+.saison-section-title {
+    width: 90%;
+    margin: auto;
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: solid 2px white;
+
+}
+
 .account-choice .bloc .choice {
     text-decoration: none;
     color: #FFFFFF;
@@ -891,4 +904,62 @@ td {
     background: #088FC0;
     border: 2px solid #FFFFFF;
     font-weight: bold;
+}
+
+.episode-container {
+    width: 100%;
+    margin: 50px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.episode-content {
+    transition: .3s;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 75%;
+    margin: 10px auto;
+    background: #121212;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13), 0 1px 1px 0 rgba(0, 0, 0, .11);
+    border: 1px solid #FFFFFF;
+}
+
+.episode-content:hover {
+    transform: scale(1.02);
+}
+
+.episode-content .episode-title {
+    font-weight: bold;
+    color: #088FC0;
+    font-size: 1.5em;
+}
+
+.episode-content .episode-poster {
+    width: 250px;
+    height: 150px;
+}
+
+.suggestion {
+    margin-top: 20px;
+}
+
+.suggestion h2 {
+    font-weight: bold;
+    font-size: 1.8em;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.suggestion-container {
+    margin: 20px auto;
+    padding: 10px 0;
+    display: flex;
+    width: 80%;
+    overflow-x: scroll;
+    gap: 50px;
+    border-top: 1px solid #088FC0;
+    border-bottom: 1px solid #088FC0;
+    background: #121212;
 }

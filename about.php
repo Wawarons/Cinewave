@@ -11,11 +11,12 @@ if (isset($_GET['movie_id'])) {
     $movieId = $_GET['movie_id'];
     $item = getFilmById($movieId);
     $credits = getFilmCredits($movieId);
+    $similarItems = getFilmSimilaire($movieId);
 } else if (isset($_GET['serie_id'])) {
     $serieId = $_GET['serie_id'];
     $item = getSerieByID($serieId);
     $credits = getSerieCredits($serieId);
-    $episodes = getEpisodesSerie($serieId);
+    $similarItems = getSerieSimilaire($serieId);
 } else {
     header("Location: accueil.php");
 }
@@ -57,13 +58,13 @@ $release_date = $item['release_date'] ?? $item['first_air_date'];
                 <p><span class="details">Réalisation:</span> <?= $release_date ?></p>
                 <p><span class="details">Pays de réalisation:</span> <?= $item['production_countries'][0]['name'] ?></p>
                 <?php
-                    if($movieId) {
-                        echo "<p><span class='details'>Durée:</span> ".formatedHours($item['runtime']). "</p>";
-                    } else {
-                        echo "
-                            <p><span class='details'>Nombre d'épisodes:</span> ". $item['number_of_episodes']. "</p>
-                            <p><span class='details'>Nombre de saisons:</span> ". $item['number_of_seasons']. "</p>";
-                    }
+                if ($movieId) {
+                    echo "<p><span class='details'>Durée:</span> " . formatedHours($item['runtime']) . "</p>";
+                } else {
+                    echo "
+                            <p><span class='details'>Nombre d'épisodes:</span> " . $item['number_of_episodes'] . "</p>
+                            <p><span class='details'>Nombre de saisons:</span> " . $item['number_of_seasons'] . "</p>";
+                }
                 ?>
 
                 <p><span class="details">Note:</span>
@@ -73,31 +74,75 @@ $release_date = $item['release_date'] ?? $item['first_air_date'];
         </div>
     </div>
 </div>
-<?php
-if (isset($_GET['serie_id'])) {
-    foreach ($episodes['episodes'] as $episode)
-    {
-        echo "<div class='nombre episodes'><p>".$episode['name']."</p>
-        <img src='https://image.tmdb.org/t/p/w200".$episode['still_path']."' alt='".$episode['name']."'>
-        <p>".$episode['overview']."</p>
- </div>";
+<div id="saison-container">
+    <?php
+    if (isset($_GET['serie_id']) && isset($item['number_of_seasons'])) {
+        for ($i = 1; $i < $item['number_of_seasons']; $i++) {
+            $episodes = getEpisodesSerie($serieId, $i);
+            echo "<div class='saison-section' onclick='toggleSaison(event)'>
+                    <h2 class='saison-section-title'>Saison $i</h2>
+                <div class='episode-container'>";
+            foreach ($episodes['episodes'] as $episode) {
+                $episodeImage = !empty($episode['still_path'])
+                    ? "https://image.tmdb.org/t/p/w200" . $episode['still_path']
+                    : "https://placehold.co/400x300?text=No+Image";
+                echo "
+                <div class='episode-content'>
+                        <img class='episode-poster' src='$episodeImage' alt='" . $episode['name'] . "'>
+                        <div class='episode-description'>
+                            <h3 class='episode-title'>" . $episode['name'] . "</h3>
+                            <p class='episode-description'>" . $episode['overview'] . "</p>
+                        </div>
+                 </div>";
+            }
+            echo "</div></div>";
+        }
     }
-}
-?>
+    ?>
+</div>
 <div id="section-casting">
     <h2 id="cast-title">Casting</h2>
     <div id="casting-container">
         <?php
-            foreach ($credits['cast'] as $people) {
-                $profileImage = !empty($people['profile_path'])
-                    ? "https://image.tmdb.org/t/p/w200" . $people['profile_path']
-                    : "https://placehold.co/200x300?text=No+Image";
+        foreach ($credits['cast'] as $people) {
+            $profileImage = !empty($people['profile_path'])
+                ? "https://image.tmdb.org/t/p/w200" . $people['profile_path']
+                : "https://placehold.co/200x300?text=No+Image";
 
-                echo "<img class='cast-people' title='" . htmlspecialchars($people['name'], ENT_QUOTES) . "' 
+            echo "<img class='cast-people' title='" . htmlspecialchars($people['name'], ENT_QUOTES) . "' 
                         src='" . $profileImage . "' 
                         alt='" . htmlspecialchars($people['name'], ENT_QUOTES) . "'>";
 
-            }
+        }
         ?>
     </div>
 </div>
+<div class="suggestion">
+        <h2>Similaire</h2>
+    <div class="suggestion-container">
+        <?php
+        foreach ($similarItems['results'] as $item) {
+            $itemImage = !empty($item['poster_path'])
+                ? "https://image.tmdb.org/t/p/w200" . $item['poster_path']
+                : "https://placehold.co/200x300?text=No+Image";
+            $link = isset($_GET['serie_id']) ? "about.php?serie_id=" : "about.php?film_id=";
+            $link .= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8');
+            echo "
+                 <div class='poster'>
+                    <a href='$link'>
+                        <img src='$itemImage' alt='affiche de film' class='poster-image'>
+                    </a>
+                 </div>
+                ";
+        }
+        ?>
+    </div>
+</div>
+<script>
+    toggleSaison = (event) => {
+        event.stopPropagation();
+        let saisonSection = event.currentTarget;
+        let content = saisonSection.querySelector('div:nth-child(2)');
+        content.style.display = content.style.display === 'none' ? 'block' : 'none';
+    };
+</script>
