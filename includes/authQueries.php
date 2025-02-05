@@ -14,6 +14,7 @@ function getUserByEmail(string $email): ?array {
         user_id,
         username,
         email,
+        role,
         password
     FROM 
         authentication
@@ -49,7 +50,8 @@ function getUserByUsernameOrEmail(string $username = null, string $email = null)
     SELECT 
         user_id,
         username,
-        email
+        email,
+        role
     FROM 
         authentication
     WHERE

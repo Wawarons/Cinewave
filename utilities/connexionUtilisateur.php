@@ -13,6 +13,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])) {
         $_SESSION["user"]["username"] = $user['username'];
         $_SESSION["user"]["email"] = $user['email'];
         $_SESSION["user"]["id"] = $user['user_id'];
+        $_SESSION["user"]["role"] = $user['role'];
         header('Location: ../accueil.php');
     } else {
         $_SESSION["errors_connexion"][0] = "Mot de passe incorrecte";

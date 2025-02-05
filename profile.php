@@ -33,5 +33,18 @@ if (isset($_SESSION['user'])) {
             <p>Paramètres</p>
         </a>
     </div>
+    <?php
+    if(isset($user['role']) && $user['role'] === 'admin') {
+        echo "
+        <div class='bloc'>
+        <a href='user/admin.php' class='choice'>
+            <img  src='assets/images/icons/admin.svg' alt='subscribe' width='80' height='80'/>
+            <p>Panneau de contrôle</p>
+        </a>
+    </div>
+        ";
+    }
+    ?>
+
 
 </div>

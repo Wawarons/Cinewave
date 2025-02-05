@@ -10,7 +10,7 @@ function getAuthConnection(): mysqli
     $server = "localhost";
     $username = "root";
 
-    $conn = new  mysqli($server, $username, "FGiggle5678.", "cinewave");
+    $conn = new  mysqli($server, $username, "", "cinewave");
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
