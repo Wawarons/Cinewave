@@ -73,6 +73,40 @@ function getSerieByID(int $id): ?array
     return $response;
 }
 
+function searchFilm(string $title) {
+
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    $title = str_split($title);
+    $title = join('+', $title);
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL => "https://api.themoviedb.org/3/search/movie?query=$title&api_key=7ae5b548b2b7688fe71f95dadd7b7b1d",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => [
+            "accept: application/json"
+        ],
+    ]);
+
+    $response = curl_exec($curl);
+
+    if ($response === false) {
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        return null;
+    }
+
+
+    $response = json_decode($response, true);
+
+    curl_close($curl);
+
+    return $response;
+
+}
+
 
 
 /**
@@ -86,7 +120,7 @@ function getPopularFilms(int $page = 1) {
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
     curl_setopt_array($curl, [
-        CURLOPT_URL => "https://api.themoviedb.org/3/discover/movie?api_key=7ae5b548b2b7688fe71f95dadd7b7b1d&include_adult=false&include_video=false&language=fr-FR&page=$page&sort_by=popularity.desc",
+        CURLOPT_URL => "https://api.themoviedb.org/3/discover/movie?api_key=7ae5b548b2b7688fe71f95dadd7b7b1d&include_video=true&language=fr-FR&page=$page&sort_by=popularity.desc",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_CUSTOMREQUEST => "GET",
         CURLOPT_HTTPHEADER => [

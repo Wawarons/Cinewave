@@ -34,9 +34,9 @@ if(isset($_SESSION['user'])) {
                 <a href="serie.php" class="navlink">Séries</a>
                 <a href="abonnement.php" class="navlink" id="abonnement_link">S'abonner</a>
             </div>
-                <form action="#">
-                    <input type="submit" value="chercher" id="search_button">
-                    <input type="text" placeholder="From..." id="searchbar">
+                <form id="search" action="utilities/searchContent.php" method="POST">
+                    <input type="text" placeholder="From..." id="searchbar" name="title">
+                    <input type="submit" value="" id="search_button">
                 </form>
 
             <a href="<?= empty($user) ? "connexion.php":"profile.php" ?>" class="navlink">

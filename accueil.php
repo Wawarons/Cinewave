@@ -44,7 +44,7 @@ $series = getPopularSeries();
 
                 echo "
                  <div class='poster'>
-                    <a href='about.php?serie_id=" . htmlspecialchars($serie['id'], ENT_QUOTES, 'UTF-8') . "'>
+                    <a href='about.php?serie_id=" . htmlspecialchars($serie['id'], ENT_QUOTES, 'UTF-8') . "&saison=1'>
                         <img src='https://image.tmdb.org/t/p/w400" . htmlspecialchars($serie['poster_path'], ENT_QUOTES, 'UTF-8') . "' alt='affiche de film' class='poster-image'>
                     </a>
                  </div>

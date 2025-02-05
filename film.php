@@ -9,7 +9,6 @@ $total_pages = $dataMovies['total_pages'];
 $limit = 10;
 $start = max(1, $current_page - floor($limit / 2));
 $end = min($total_pages, $start + $limit - 1);
-$start = max(1, $end - $limit + 1);
 
 // Diviser les films en sections de 5
 $chunks = array_chunk($dataMovies['results'], 5);

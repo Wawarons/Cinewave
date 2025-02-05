@@ -21,6 +21,11 @@ if (isset($_GET['movie_id'])) {
     header("Location: accueil.php");
 }
 
+if(!empty($_GET['saison'])) {
+    $saison = (int) $_GET['saison'];
+    $episodes = getEpisodesSerie($serieId, $saison);
+}
+
 function formatedHours(float $time)
 {
     $hours = floor($time / 60);
@@ -77,26 +82,30 @@ $release_date = $item['release_date'] ?? $item['first_air_date'];
 <div id="saison-container">
     <?php
     if (isset($_GET['serie_id']) && isset($item['number_of_seasons'])) {
+        echo "<select class='saison-section' onchange='toggleSaison(event)'>";
+        var_dump($item);
         for ($i = 1; $i < $item['number_of_seasons']; $i++) {
-            $episodes = getEpisodesSerie($serieId, $i);
-            echo "<div class='saison-section' onclick='toggleSaison(event)'>
-                    <h2 class='saison-section-title'>Saison $i</h2>
-                <div class='episode-container'>";
-            foreach ($episodes['episodes'] as $episode) {
-                $episodeImage = !empty($episode['still_path'])
-                    ? "https://image.tmdb.org/t/p/w200" . $episode['still_path']
-                    : "https://placehold.co/400x300?text=No+Image";
-                echo "
-                <div class='episode-content'>
-                        <img class='episode-poster' src='$episodeImage' alt='" . $episode['name'] . "'>
-                        <div class='episode-description'>
-                            <h3 class='episode-title'>" . $episode['name'] . "</h3>
-                            <p class='episode-description'>" . $episode['overview'] . "</p>
-                        </div>
-                 </div>";
+            $selected = !empty($_GET['saison']) && $_GET['saison'] == $i ? "selected" : "";
+            echo "<option class='saison' value='$i' $selected>Saison $i</option>";
+        }
+            echo "</select>";
+                echo "<div class='episode-container'>";
+            if(isset($episodes['episodes'])) {
+                foreach ($episodes['episodes'] as $episode) {
+                    $episodeImage = !empty($episode['still_path'])
+                        ? "https://image.tmdb.org/t/p/w200" . $episode['still_path']
+                        : "https://placehold.co/400x300?text=No+Image";
+                    echo "
+                    <div class='episode-content'>
+                            <img class='episode-poster' src='$episodeImage' alt='" . $episode['name'] . "'>
+                            <div class='episode-description'>
+                                <h3 class='episode-title'>" . $episode['name'] . "</h3>
+                                <p class='episode-description'>" . $episode['overview'] . "</p>
+                            </div>
+                     </div>";
+                }
             }
             echo "</div></div>";
-        }
     }
     ?>
 </div>
@@ -125,7 +134,7 @@ $release_date = $item['release_date'] ?? $item['first_air_date'];
             $itemImage = !empty($item['poster_path'])
                 ? "https://image.tmdb.org/t/p/w200" . $item['poster_path']
                 : "https://placehold.co/200x300?text=No+Image";
-            $link = isset($_GET['serie_id']) ? "about.php?serie_id=" : "about.php?film_id=";
+            $link = isset($_GET['serie_id']) ? "about.php?serie_id=" : "about.php?movie_id=";
             $link .= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8');
             echo "
                  <div class='poster'>
@@ -140,9 +149,6 @@ $release_date = $item['release_date'] ?? $item['first_air_date'];
 </div>
 <script>
     toggleSaison = (event) => {
-        event.stopPropagation();
-        let saisonSection = event.currentTarget;
-        let content = saisonSection.querySelector('div:nth-child(2)');
-        content.style.display = content.style.display === 'none' ? 'block' : 'none';
+        window.location.href = `about.php?serie_id=<?= $serieId ?>&saison=${event.target.value}`;
     };
 </script>

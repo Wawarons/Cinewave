@@ -26,7 +26,7 @@ $chunks = array_chunk($dataMovies['results'], 5);
                 : "https://placehold.co/200x300?text=No+Image";
             echo "<div class='content'>
                      <div class='poster'>
-                        <a href='about.php?serie_id=" . htmlspecialchars($serie['id'], ENT_QUOTES, 'UTF-8') . "'>
+                        <a href='about.php?serie_id=" . htmlspecialchars($serie['id'], ENT_QUOTES, 'UTF-8') . "&saison=1'>
                             <img src='". $posterPath ."' alt='affiche de film' class='poster-image'>
                         </a>
                         <div class='rate-container'>

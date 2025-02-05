@@ -72,6 +72,7 @@ header nav:hover {
 
 header nav form {
     display: flex;
+    align-items: center;
     justify-content: center;
     flex-direction: row;
     margin: 0 0 0 25px;
@@ -79,30 +80,26 @@ header nav form {
     height: fit-content;
 }
 
-header #search_button {
-    border-radius: 10px 0 0 10px;
-    border: none;
-    outline: none;
-    margin: 0;
-    width: 100px;
-    text-align: left;
-    padding: 5px 10px;
-    font-weight: bold;
-    font-family: 'Prompt', sans-serif;
-    height: 40px;
-}
-
 header #searchbar {
-    transform: translateX(-20%);
-    padding: 5px;
-    border-radius: 10px;
     margin: 0;
+    color: #FFFFFF;
     border: none;
+    padding: 10px;
+    background: transparent;
+    border-bottom: 1px solid #088FC0;
     outline: none;
     width: 200px;
     font-family: 'Prompt', sans-serif;
 }
 
+header #search_button {
+    background: url("../assets/images/icons/search.png") center center no-repeat;
+    background-size: cover;
+    border: none;
+    outline: none;
+    width: 25px;
+    height: 25px;
+}
 
 header #logo_container {
     display: flex;
@@ -486,24 +483,30 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     list-style: none;
 }
 
 .pagination a {
+    padding: 5px;
+    background: #FFFFFF;
+    border: 1px solid rgba(25, 92, 151, 0.7);
+    color: #088FC0;
     text-decoration: none;
-    color: #FFFFFF;
     font-weight: bold;
     transition: 0.3s;
 }
 
 .pagination a:hover {
     text-decoration: none;
-    color: #088FC0;
+    background: #088FC0;
+    color: #FFFFFF;
 }
 
 .pagination .active {
-    color: #088FC0;
+    font-weight: bold;
+    background: #088FC0;
+    padding: 5px;
+    color: white;
 }
 
 
