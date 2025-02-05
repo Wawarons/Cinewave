@@ -44,7 +44,7 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin'){
 </header>
     <div class="admin_menu">
         <p class="menu_text">Menu</p>
-        <button class="button_menu">Tableau de Bord </button>
+        <button class="button_menu" onclick="showGraph()">Tableau de Bord </button>
         <button class="button_menu">Gestion des Utilisateurs</button>
         <button class="button_menu">Gestion du Contenu</button>
         <button class="button_menu">Gestion des Médias</button>
@@ -53,7 +53,7 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin'){
         <button class="button_menu">Gestion des Commentaires et Avis</button>
         <button class="button_menu">Sécurité et Permissions</button>
         <button class="button_menu">Extensions et Modules</button>
-        <button class="button_menu" onclick="showGraph()">Afficher la Carte Graphique</button>
+
     </div>
     <div id="graph" class="hidden">
         <canvas id="myChart"></canvas>
