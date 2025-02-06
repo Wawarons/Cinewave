@@ -8,14 +8,15 @@ require_once 'includes/contentQueries.php';
 $title = $_GET['title'];
 
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$results = searchFilm($title, $current_page);
-$total_pages = $results['total_pages'];
+$results = searchFilm($title, $current_page) ?? [];
+$total_pages = $results['total_pages'] ?? 0;
 $limit = 10;
 $start = max(1, $current_page - floor($limit / 2));
 $end = min($total_pages, $start + $limit - 1);
 
 ?>
-<h1 id="search-title">Resultat: <?= $title ?></h1>
+<h1 id="search-title">
+    <span style="color: #088FC0"><?= $results['total_results'] ?? 0 ?></span> resultats pour <span style="color: #088FC0"><?= $title ?></span></h1>
 <div id="search-container">
     <?php
         if(!empty($results['results'])){

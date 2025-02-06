@@ -1,18 +1,7 @@
 <?php
 
-session_start();
-include('includes/header.php');
+require_once ('includes/header.php');
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire de Contact</title>
-
-</head>
-<body>
 
 <div class="container">
     <h2>Contactez-nous</h2>
@@ -39,6 +28,3 @@ include('includes/header.php');
         <button type="submit" class="submit">Envoyer</button>
     </form>
 </div>
-
-</body>
-</html>

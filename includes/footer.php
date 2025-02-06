@@ -2,7 +2,7 @@
 <footer>
     <div id="end">
     <ul>
-        <li><a href="../contact.php">Contact </a></li>
+        <li><a href="contact.php">Contact </a></li>
         <li><a href="#">FAQ</a></li>
         <li><a href="#">A propos du site</a></li>
     </ul>

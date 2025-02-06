@@ -2,6 +2,8 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+$user = $_SESSION['user'];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -37,6 +39,20 @@ if (session_status() === PHP_SESSION_NONE) {
         </a>
     </nav>
 </header>
-<body>
-<a href="../utilities/logout.php">Se deconnecter</a>
+<h2 id="profile-title">Profil utilisateur</h2>
+<div id="data-container">
+    <p>Username</p>
+
+    <div class="data-user">
+        <p><?= $user['username'] ?></p>
+    </div>
+    <p>Email</p>
+    <div class="data-user">
+
+        <p><?= $user['email'] ?></p>
+    </div>
+
+        <a id="logout" href="../utilities/logout.php">Déconnexion</a>
+</div>
+
 </body>

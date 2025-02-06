@@ -19,6 +19,11 @@ if (isset($_GET['movie_id'])) {
     header("Location: accueil.php");
 }
 
+if(!empty($_GET['saison'])) {
+    $saison = (int) $_GET['saison'];
+    $episodes = getEpisodesSerie($serieId, $saison);
+}
+
 function formatedHours(float $time)
 {
     $hours = floor($time / 60);
@@ -54,14 +59,14 @@ $release_date = $item['release_date'] ?? $item['first_air_date'];
             </div>
             <div id="about-details">
                 <p><span class="details">Réalisation:</span> <?= $release_date ?></p>
-                <p><span class="details">Pays de réalisation:</span> <?= $item['production_countries'][0]['name'] ?></p>
+                <p><span class="details">Pays de réalisation:</span> <?= $item['production_countries'][0]['name'] ?? "inconnu" ?></p>
                 <?php
                     if($movieId) {
                         echo "<p><span class='details'>Durée:</span> ".formatedHours($item['runtime']). "</p>";
                     } else {
                         echo "
-                            <p><span class='details'>Nombre d'épisodes:</span> ". $item['number_of_episodes']. "</p>
-                            <p><span class='details'>Nombre de saisons:</span> ". $item['number_of_seasons']. "</p>";
+                            <p><span class='details'>Nombre d'épisodes:</span> ". $item['number_of_episodes'] ?? "inconnu". "</p>
+                            <p><span class='details'>Nombre de saisons:</span> ". $item['number_of_seasons'] ?? "inconnu" . "</p>";
                     }
                 ?>
 
@@ -72,6 +77,38 @@ $release_date = $item['release_date'] ?? $item['first_air_date'];
         </div>
     </div>
 </div>
+
+<div id="saison-container">
+    <?php
+    if (isset($_GET['serie_id']) && isset($item['number_of_seasons'])) {
+        echo "<select class='saison-section' onchange='toggleSaison(event)'>";
+        var_dump($item);
+        for ($i = 1; $i < $item['number_of_seasons']; $i++) {
+            $selected = !empty($_GET['saison']) && $_GET['saison'] == $i ? "selected" : "";
+            echo "<option class='saison' value='$i' $selected>Saison $i</option>";
+        }
+        echo "</select>";
+        echo "<div class='episode-container'>";
+        if(isset($episodes['episodes'])) {
+            foreach ($episodes['episodes'] as $episode) {
+                $episodeImage = !empty($episode['still_path'])
+                    ? "https://image.tmdb.org/t/p/w200" . $episode['still_path']
+                    : "https://placehold.co/400x300?text=No+Image";
+                echo "
+                    <div class='episode-content'>
+                            <img class='episode-poster' src='$episodeImage' alt='" . $episode['name'] . "'>
+                            <div class='episode-description'>
+                                <h3 class='episode-title'>" . $episode['name'] . "</h3>
+                                <p class='episode-description'>" . $episode['overview'] . "</p>
+                            </div>
+                     </div>";
+            }
+        }
+        echo "</div></div>";
+    }
+    ?>
+</div>
+
 <div id="section-casting">
     <h2 id="cast-title">Casting</h2>
     <div id="casting-container">
@@ -89,3 +126,8 @@ $release_date = $item['release_date'] ?? $item['first_air_date'];
         ?>
     </div>
 </div>
+<script>
+    toggleSaison = (event) => {
+        window.location.href = `about.php?serie_id=<?= $serieId ?>&saison=${event.target.value}`;
+    };
+</script>

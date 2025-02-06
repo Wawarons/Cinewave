@@ -1013,3 +1013,47 @@ td {
     text-decoration: none;
     color: #FFFFFF;
 }
+
+#search-title {
+    text-align: center;
+}
+
+#profile-title {
+    font-size: 36px;
+    color: #088FC0;
+    text-align: center;
+}
+
+#data-container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 15px;
+    justify-content: center;
+    background: #121212;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+}
+
+.data-user {
+    padding: 2px 5px;
+    background: #088FC0;
+    width: 250px;
+    border: 1px solid #FFFFFF;
+}
+
+.data-user:hover {
+    cursor: pointer;
+    background: #046083;
+}
+
+#logout {
+    padding: 5px;
+    background-color: #f85959;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    text-decoration: none;
+    width: fit-content;
+    margin: 10px auto;
+}
