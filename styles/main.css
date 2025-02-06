@@ -193,8 +193,18 @@ header #navlinks {
 
 .poster .poster-image:hover {
     border: 2px solid #088FC0;
+    transform: scale(1.05);
+    animation-delay: 1s;
 }
-
+.crypto-title{
+    color: #121212;
+}
+#cryptoBalance{
+    color: #121212;
+}
+.coins{
+    color: #121212;
+}
 .top_contenu {
     max-width: 100vw;
     display: flex;
@@ -894,6 +904,15 @@ td {
     text-align: center;
     border-bottom: solid 2px white;
 
+}
+.saison-section{
+    width: 120px;
+    padding: 5px 10px;
+    background-color: #088FC0;
+    color: #FFFFFF;
+    font-weight: bold;
+    border: solid 2px;
+    border-radius: 10px;
 }
 
 .account-choice .bloc .choice {
