@@ -73,7 +73,7 @@ function getSerieByID(int $id): ?array
     return $response;
 }
 
-function searchFilm(string $title) {
+function searchFilm(string $title, int $currentPage = 1) {
 
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
@@ -81,7 +81,7 @@ function searchFilm(string $title) {
     $title = join('+', $title);
 
     curl_setopt_array($curl, [
-        CURLOPT_URL => "https://api.themoviedb.org/3/search/movie?query=$title&api_key=7ae5b548b2b7688fe71f95dadd7b7b1d",
+        CURLOPT_URL => "https://api.themoviedb.org/3/search/movie?query=$title&api_key=7ae5b548b2b7688fe71f95dadd7b7b1d&page=$currentPage&language=fr-FR",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_CUSTOMREQUEST => "GET",
         CURLOPT_HTTPHEADER => [

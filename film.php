@@ -2,7 +2,6 @@
 include("includes/header.php");
 include("includes/contentQueries.php");
 
-// Récupérer les données des films
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $dataMovies = getPopularFilms($current_page);
 $total_pages = $dataMovies['total_pages'];
@@ -10,7 +9,6 @@ $limit = 10;
 $start = max(1, $current_page - floor($limit / 2));
 $end = min($total_pages, $start + $limit - 1);
 
-// Diviser les films en sections de 5
 $chunks = array_chunk($dataMovies['results'], 5);
 ?>
 <div id="content-container">
